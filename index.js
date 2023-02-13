@@ -32,11 +32,12 @@ const topTenMovies = [
 
 app.use(morgan("common"));
 
-app.use(express.static(path.join(__dirname, "public")));
-
 app.get("/", (req, res) => {
-  res.send("Welcome to my movies");
+  console.log("Hello World");
+  res.send("Welcome to my app!");
 });
+
+app.use("/", express.static("public"));
 
 app.get("/movies", (req, res) => {
   res.json(topTenMovies);
@@ -46,6 +47,7 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something broke!");
 });
+
 app.listen(3000, (req, res) => {
   console.log("Your app is listening on port 3000");
 });
