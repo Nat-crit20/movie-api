@@ -28,95 +28,9 @@ const topTenMovies = [
       Birth: 1978,
     },
   },
-  {
-    Title: "",
-    Release: "",
-    Genre: {
-      Name: "",
-    },
-    Director: {
-      Name: "",
-      Birth: 1990,
-    },
-  },
-  {
-    Title: "",
-    Release: "",
-    Genre: {
-      Name: "",
-    },
-    Director: {
-      Name: "",
-      Birth: 1990,
-    },
-  },
-  {
-    Title: "",
-    Release: "",
-    Genre: {
-      Name: "",
-    },
-    Director: {
-      Name: "",
-      Birth: 1990,
-    },
-  },
-  {
-    Title: "",
-    Release: "",
-    Genre: {
-      Name: "",
-    },
-    Director: {
-      Name: "",
-      Birth: 1990,
-    },
-  },
-  {
-    Title: "",
-    Release: "",
-    Genre: {
-      Name: "",
-    },
-    Director: {
-      Name: "",
-      Birth: 1990,
-    },
-  },
-  {
-    Title: "",
-    Release: "",
-    Genre: {
-      Name: "",
-    },
-    Director: {
-      Name: "",
-      Birth: 1990,
-    },
-  },
-  {
-    Title: "",
-    Release: "",
-    Genre: {
-      Name: "",
-    },
-    Director: {
-      Name: "",
-      Birth: 1990,
-    },
-  },
-  {
-    Title: "",
-    Release: "",
-    Genre: {
-      Name: "",
-    },
-    Director: {
-      Name: "",
-      Birth: 1990,
-    },
-  },
 ];
+
+app.use(morgan("common"));
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -128,6 +42,10 @@ app.get("/movies", (req, res) => {
   res.json(topTenMovies);
 });
 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
 app.listen(3000, (req, res) => {
   console.log("Your app is listening on port 3000");
 });
