@@ -75,7 +75,7 @@ app.delete("/users/:id/:movies/:favorites", (req, res) => {
   res.send("Successfully deleted movie from favorites");
 });
 
-app.delete("/:users/:id", (req, res) => {
+app.delete("/users/:id", (req, res) => {
   res.send("Successfully deleted yourself");
 });
 
