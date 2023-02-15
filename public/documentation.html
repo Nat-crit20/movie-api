@@ -30,73 +30,87 @@
           <td>Return a list of all movies</td>
           <td>/movies</td>
           <td>GET</td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>-</td>
+          <td>-</td>
+          <td>A JSON object holding data about all the movies</td>
         </tr>
         <tr>
           <td>Return data about a single movie by title</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>/movies/:title</td>
+          <td>GET</td>
+          <td>:title</td>
+          <td>-</td>
+          <td>A JSON object holding data about the single movie.</td>
         </tr>
         <tr>
           <td>Return data about a genre by name/title</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>/genre/:name</td>
+          <td>GET</td>
+          <td>:name</td>
+          <td>-</td>
+          <td>A JSON object holding data about a specific genre of movie.</td>
         </tr>
         <tr>
           <td>Return data about a director by name</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>/directors/:name</td>
+          <td>GET</td>
+          <td>:name</td>
+          <td>-</td>
+          <td>A JSON object holding the data about a specific director.</td>
         </tr>
         <tr>
           <td>Allow new users to register;</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>/users</td>
+          <td>POST</td>
+          <td>-</td>
+          <td>
+            A JSON object holding data about the user to add, structured like: {
+            "name" : "Nat", movies:{favorites:[], watched:[]} }.
+          </td>
+          <td>
+            A JSON object holding data about the user that was added to the list
+            of users
+          </td>
         </tr>
         <tr>
           <td>Allow users to update their user info (username);</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>/users/:id</td>
+          <td>PUT</td>
+          <td>:id</td>
+          <td>-</td>
+          <td>
+            A JSON object holding the data about the updated user information.
+          </td>
         </tr>
         <tr>
           <td>Allow users to add a movie to their list of favorites</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>/users/:id/:movies/:favorites</td>
+          <td>POST</td>
+          <td>:id, :movies, :favorites</td>
+          <td>-</td>
+          <td>
+            A JSON object holding the data about the movie that was added to the
+            user.
+          </td>
         </tr>
         <tr>
           <td>Allow users to remove a movie from their list of favorites</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>/users/:id/:movies/:favorites</td>
+          <td>DELETE</td>
+          <td>:id, :movies, :favorites</td>
+          <td>-</td>
+          <td>
+            A JSON object holding data about the the movie that was removed from
+            the user.
+          </td>
         </tr>
         <tr>
           <td>Allow existing users to deregister</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>/users/:id</td>
+          <td>DELETE</td>
+          <td>:id</td>
+          <td>-</td>
+          <td>A JSON object holding data about the user removed</td>
         </tr>
       </tbody>
     </table>
