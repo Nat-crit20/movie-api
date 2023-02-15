@@ -44,7 +44,11 @@ app.get("/movies", (req, res) => {
 });
 
 app.get("/movies/:title", (req, res) => {
-  res.send("Hello World");
+  const { title } = req.params;
+  const movie = topTenMovies.find((element) => {
+    return element.Title === title;
+  });
+  res.send(movie);
 });
 
 app.get("/genre/:name", (req, res) => {
