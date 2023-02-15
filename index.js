@@ -43,6 +43,38 @@ app.get("/movies", (req, res) => {
   res.json(topTenMovies);
 });
 
+app.get("/movies/:title", (req, res) => {
+  res.send("Hello World");
+});
+
+app.get("/genre/:name", (req, res) => {
+  res.send("Hello Movie");
+});
+
+app.get("/directors/:name", (req, res) => {
+  res.send("Hello Directors");
+});
+
+app.post("/users", (req, res) => {
+  res.send("Successful creation");
+});
+
+app.put("/users/:id", (req, res) => {
+  res.send("Successful update");
+});
+
+app.post("/users/:id/:movies/:favorites", (req, res) => {
+  res.send("Successfully add movie to favorite");
+});
+
+app.delete("/users/:id/:movies/:favorites", (req, res) => {
+  res.send("Successfully deleted movie from favorites");
+});
+
+app.delete("/:users/:id", (req, res) => {
+  res.send("Successfully deleted yourself");
+});
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something broke!");
