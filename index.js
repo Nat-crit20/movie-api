@@ -52,7 +52,7 @@ app.get("/movies/:title", (req, res) => {
 });
 
 app.get("/genre/:name", (req, res) => {
-  res.send("Successful GET of movie");
+  res.send("Successful GET of movie genre");
 });
 
 app.get("/directors/:name", (req, res) => {
