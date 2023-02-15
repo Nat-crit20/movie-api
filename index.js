@@ -48,19 +48,19 @@ app.get("/movies/:title", (req, res) => {
 });
 
 app.get("/genre/:name", (req, res) => {
-  res.send("Hello Movie");
+  res.send("Successful GET of movie");
 });
 
 app.get("/directors/:name", (req, res) => {
-  res.send("Hello Directors");
+  res.send("Successful GET of director");
 });
 
 app.post("/users", (req, res) => {
-  res.send("Successful creation");
+  res.send("Successful creation of user");
 });
 
 app.put("/users/:id", (req, res) => {
-  res.send("Successful update");
+  res.send("Successful updated user");
 });
 
 app.post("/users/:id/:movies/:favorites", (req, res) => {
