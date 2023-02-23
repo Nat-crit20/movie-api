@@ -2,42 +2,23 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
 const Models = require("./models.js");
-const path = require("path");
 const app = express();
 
 const Movies = Models.Movie;
 const Users = Models.User;
-mongoose.connect("mongodb:://localhost:27017/myFlixDB", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-const topTenMovies = [
-  {
-    Title: "Avengers: Endgame",
-    Release: 2019,
-    Genre: ["Action", "Adventure", "Superhero", "Science fiction", "Fantasy"],
-    Director: [
-      {
-        Name: "Anthony Russo",
-        Birth: 1970,
-      },
-      {
-        Name: "Joe Russo",
-        Birth: 1970,
-      },
-    ],
-  },
-  {
-    Title: "Sonic 2",
-    Release: 2022,
-    Genre: ["Action", "Fantasy", "Comedy", "Adventure", "Animation"],
-    Director: {
-      Name: "Jeff Fowler",
-      Birth: 1978,
-    },
-  },
-];
+
+main()
+  .then(() => console.log("Connected to database"))
+  .catch((err) => console.log(err));
+
+async function main() {
+  await mongoose.connect("mongodb://127.0.0.1:27017/myFlixDB", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+}
 
 app.use(morgan("common"));
 app.use(bodyParser.json());
@@ -51,7 +32,13 @@ app.get("/", (req, res) => {
 app.use("/", express.static("public"));
 
 app.get("/movies", (req, res) => {
-  res.json(topTenMovies);
+  Movies.find()
+    .then((movie) => {
+      res.status(200).json(movie);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
 });
 
 app.get("/movies/:title", (req, res) => {
