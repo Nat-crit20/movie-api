@@ -1,7 +1,12 @@
 const express = require("express");
 const morgan = require("morgan");
+const mongoose = require("mongoose");
+const Models = require("./models.js");
 const path = require("path");
 const app = express();
+
+const Movies = Models.Movie;
+const Users = Models.User;
 
 const topTenMovies = [
   {
