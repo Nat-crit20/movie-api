@@ -1,18 +1,199 @@
-Url: / timestamp: Tue Feb 07 2023 10:04:06 GMT-0600 (Central Standard Time) 
+{
+  Title: "Silence of the Lambs",
+  Description: "A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer.",
+  Genre: {
+    Name: "Thriller",
+    Description: "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+  },
+  Director: {
+    Name: "Jonathan Demme",
+    Bio: "Robert Jonathan Demme was an American director, producer, and screenwriter.",
+    Birth: "1944",
+    Death: "2017"
+  },
+  ImagePath: "silenceofthelambs.png",
+  Featured: true
+}
 
-Url: /favicon.ico timestamp: Tue Feb 07 2023 10:04:06 GMT-0600 (Central Standard Time) 
+{
+    title:"Interstellar",
+    Description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    Genre:  {
+    Name: "Science Fiction",
+    Description: "Science fiction is a genre of speculative fiction, which typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration, time travel, parallel universes, and extraterrestrial life."
+  },
+    Director: {
+    Name: "Christopher Nolan",
+    Bio: "Over the course of 15 years of filmmaking, Nolan has gone from low-budget independent films to working on some of the biggest blockbusters ever made",
+    Birth: "1970",
+    Death: null
+  },
+    ImagePath: 'interstellar.png',
+    Featured: false
+}
 
-Url: / timestamp: Tue Feb 07 2023 10:04:08 GMT-0600 (Central Standard Time) 
+[
+{
+    title:"Inception",
+    Description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.",
+    Genre:  {
+    Name: "Thriller",
+    Description: "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+  },
+    Director: {
+    Name: "Christopher Nolan",
+    Bio: "Over the course of 15 years of filmmaking, Nolan has gone from low-budget independent films to working on some of the biggest blockbusters ever made",
+    Birth: "1970",
+    Death: null
+  },
+    ImagePath: 'inception.png',
+    Featured: false
+},
+{
+    title:"Tenet",
+    Description: "Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.",
+    Genre: {
+    Name: "Action",
+    Description: "Action film is a film genre in which the protagonist is thrust into a series of events that typically involve violence and physical feats"
+  },
+    Director: {
+    Name: "Christopher Nolan",
+    Bio: "Over the course of 15 years of filmmaking, Nolan has gone from low-budget independent films to working on some of the biggest blockbusters ever made",
+    Birth: "1970",
+    Death: null
+  },
+    ImagePath: 'tenet.png',
+    Featured: false
+},
+{
+    title:"E.T. the Extra-Terrestrial",
+    Description: "A troubled child summons the courage to help a friendly alien escape from Earth and return to his home planet.",
+    Genre:  {
+    Name: "Adventure",
+    Description: "Adventure fiction is a genre of literature that features stories of adventure, such as world travel, difficult quests, voyages of discovery, and other journeys."
+  },
+    Director: {
+    Name: "Steven Spielberg",
+    Bio: "One of the most influential personalities in the history of cinema, Steven Spielberg is Hollywood's best known director and one of the wealthiest filmmakers in the world. He has an extraordinary number of commercially successful and critically acclaimed credits to his name, either as a director, producer or writer since launching the summer blockbuster with Jaws (1975), and he has done more to define popular film-making since the mid-1970s than anyone else.",
+    Birth: "1946",
+    Death: null
+  },
+    ImagePath: 'et.png',
+    Featured: false
+},
+{
+    title:"Ready Player 1",
+    Description: "When the creator of a virtual reality called the OASIS dies, he makes a posthumous challenge to all OASIS users to find his Easter Egg, which will give the finder his fortune and control of his world.",
+    Genre: {
+    Name: "Science Fiction",
+    Description: "Science fiction is a genre of speculative fiction, which typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration, time travel, parallel universes, and extraterrestrial life."
+  },
+    Director: {
+    Name: "Steven Spielberg",
+    Bio: "One of the most influential personalities in the history of cinema, Steven Spielberg is Hollywood's best known director and one of the wealthiest filmmakers in the world. He has an extraordinary number of commercially successful and critically acclaimed credits to his name, either as a director, producer or writer since launching the summer blockbuster with Jaws (1975), and he has done more to define popular film-making since the mid-1970s than anyone else.",
+    Birth: "1946",
+    Death: null
+  },
+    ImagePath: 'readyPlayer1.png',
+    Featured: false
+},
+{
+    title:"Jurassic Park",
+    Description: "A pragmatic paleontologist touring an almost complete theme park on an island in Central America is tasked with protecting a couple of kids after a power failure causes the park's cloned dinosaurs to run loose.",
+    Genre:  {
+    Name: "Thriller",
+    Description: "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+  },
+    Director: {
+    Name: "Steven Spielberg",
+    Bio: "One of the most influential personalities in the history of cinema, Steven Spielberg is Hollywood's best known director and one of the wealthiest filmmakers in the world. He has an extraordinary number of commercially successful and critically acclaimed credits to his name, either as a director, producer or writer since launching the summer blockbuster with Jaws (1975), and he has done more to define popular film-making since the mid-1970s than anyone else.",
+    Birth: "1946",
+    Death: null
+  },
+    ImagePath: 'jurassicPark.png',
+    Featured: false
+},
+{
+    title:"Star Wars: A New Hope",
+    Description: "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vader.",
+    Genre: {
+    Name: "Science Fiction",
+    Description: "Science fiction is a genre of speculative fiction, which typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration, time travel, parallel universes, and extraterrestrial life."
+  },
+    Director: {
+    Name: "George Lucas",
+    Bio: "He went on to produce several more movies that have introduced major innovations in filmmaking technology. He is chairman of the board of the George Lucas Educational Foundation. In 1992, George Lucas was honored with the Irving G. Thalberg Award by the Board of Governors of the Academy of Motion Picture Arts and Sciences for his lifetime achievement.",
+    Birth: "1944",
+    Death: null
+  },
+    ImagePath: 'starWars.png',
+    Featured: false
+},
+{
+    title:"The Dark Knight Rises",
+    Description: "Eight years after the Joker's reign of chaos, Batman is coerced out of exile with the assistance of the mysterious Selina Kyle in order to defend Gotham City from the vicious guerrilla terrorist Bane.",
+    Genre:  {
+    Name: "Action",
+    Description: "Action film is a film genre in which the protagonist is thrust into a series of events that typically involve violence and physical feats"
+  },
+    Director: {
+    Name: "Christopher Nolan",
+    Bio: "Over the course of 15 years of filmmaking, Nolan has gone from low-budget independent films to working on some of the biggest blockbusters ever made",
+    Birth: "1970",
+    Death: null
+  },
+    ImagePath: 'darkKnightRises.png',
+    Featured: false
+},
+{
+    title:"Dunkirk",
+    Description: "Allied soldiers from Belgium, the British Commonwealth and Empire, and France are surrounded by the German Army and evacuated during a fierce battle in World War II.",
+    Genre:  {
+    Name: "Action",
+    Description: "Action film is a film genre in which the protagonist is thrust into a series of events that typically involve violence and physical feats"
+  },
+    Director: {
+    Name: "Christopher Nolan",
+    Bio: "Over the course of 15 years of filmmaking, Nolan has gone from low-budget independent films to working on some of the biggest blockbusters ever made",
+    Birth: "1970",
+    Death: null
+  },
+    ImagePath: 'dunkirk.png',
+    Featured: false
+}
+]
 
-Url: /favicon.ico timestamp: Tue Feb 07 2023 10:04:08 GMT-0600 (Central Standard Time) 
+db.movies.update({"Director.Name":"Christopher"}, {$set: {"Director.Bio":"He is well known for block buster many"}})
 
-Url: /documentation timestamp: Tue Feb 07 2023 10:06:15 GMT-0600 (Central Standard Time) 
-
-Url: / timestamp: Tue Feb 07 2023 10:06:25 GMT-0600 (Central Standard Time) 
-
-Url: /favicon.ico timestamp: Tue Feb 07 2023 10:06:25 GMT-0600 (Central Standard Time) 
-
-Url: /documentation timestamp: Tue Feb 07 2023 10:07:13 GMT-0600 (Central Standard Time) 
-
-Url: /favicon.ico timestamp: Tue Feb 07 2023 10:07:13 GMT-0600 (Central Standard Time) 
-
+[
+{
+    username: "anna1",
+    password: "anna234",
+    email: "anna1@gmail.com",
+    birthday: new Date('2020-01-02')
+},
+{
+    username: "phill2",
+    password: "phill123",
+    email: "phill2@gmail.com",
+    birthday: new Date('1982-04-23')
+},
+{
+    username: "Val3",
+    password: "valoria123",
+    email: "Val3@gmail.com",
+    birthday: new Date('1998-07-08')
+},
+{
+    username: "MaxPOW4",
+    password: "password2",
+    email: "MaxPOW@gmail.com",
+    birthday: new Date('1997-09-10')
+},
+{
+    username: "Scoot5",
+    password: "sock4321",
+    email: "Scoot5@gmail.com",
+    birthday: new Date('2001-10-12')
+}
+]
