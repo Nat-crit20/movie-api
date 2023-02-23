@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const Models = require("./models.js");
@@ -7,7 +8,10 @@ const app = express();
 
 const Movies = Models.Movie;
 const Users = Models.User;
-
+mongoose.connect("mongodb:://localhost:27017/myFlixDB", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 const topTenMovies = [
   {
     Title: "Avengers: Endgame",
@@ -36,6 +40,8 @@ const topTenMovies = [
 ];
 
 app.use(morgan("common"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   console.log("Hello World");
