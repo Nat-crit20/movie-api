@@ -76,11 +76,48 @@ app.get("/directors/:name", (req, res) => {
 });
 
 app.post("/users", (req, res) => {
-  res.send("Updated users");
+  Users.findOne({ Username: req.body.Username })
+    .then((user) => {
+      if (user) {
+        res.status(400).send("Username already exists");
+      } else {
+        Users.create({
+          Username: req.body.Username,
+          Password: req.body.Password,
+          Email: req.body.Email,
+          Birthday: req.body.Birthday,
+        })
+          .then((user) => {
+            res.status(201).json(user);
+          })
+          .catch((err) => {
+            res.json(`Error: ${err}`);
+          });
+      }
+    })
+    .catch((err) => {
+      res.json(`Error: ${err}`);
+    });
 });
 
 app.put("/users/:id", (req, res) => {
-  res.send("Successful updated user");
+  Users.updateOne(
+    { _id: req.params.id },
+    {
+      $set: {
+        Username: req.body.Username,
+        Password: req.body.Password,
+        Email: req.body.Email,
+        Birthday: req.body.Birthday,
+      },
+    }
+  )
+    .then((user) => {
+      res.status(200).json(user);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
 });
 
 app.post("/users/:id/movies/:movieID", (req, res) => {
