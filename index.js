@@ -122,7 +122,17 @@ app.put("/users/:id", (req, res) => {
 });
 
 app.post("/users/:id/movies/:movieID", (req, res) => {
-  res.send("Successfully add movie to favorite");
+  Users.findOneAndUpdate(
+    { _id: req.params.id },
+    { $addToSet: { FavoriteMovies: req.params.movieID } },
+    { new: true }
+  )
+    .then((user) => {
+      res.status(200).json(user);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
 });
 
 app.delete("/users/:id/movies/:movieID", (req, res) => {
