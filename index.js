@@ -47,11 +47,23 @@ app.get("/movies/:title", async (req, res) => {
     })
     .catch((err) => {
       console.log(err);
+      res.json(`Error: ${err}`);
     });
 });
 
 app.get("/genre/:name", (req, res) => {
-  res.send("Successful GET of movie genre");
+  let { name } = req.params;
+  Movies.findOne(
+    { "Genre.Name": name },
+    { "Genre.Name": 1, "Genre.Description": 1, _id: 0 }
+  )
+    .then((genre) => {
+      res.json(genre);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json(`Error: ${err}`);
+    });
 });
 
 app.get("/directors/:name", (req, res) => {
