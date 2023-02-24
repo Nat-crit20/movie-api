@@ -83,11 +83,11 @@ app.put("/users/:id", (req, res) => {
   res.send("Successful updated user");
 });
 
-app.post("/users/:id/:movies/:favorites", (req, res) => {
+app.post("/users/:id/movies/:movieID", (req, res) => {
   res.send("Successfully add movie to favorite");
 });
 
-app.delete("/users/:id/:movies/:favorites", (req, res) => {
+app.delete("/users/:id/movies/:movieID", (req, res) => {
   res.send("Successfully deleted movie from favorites");
 });
 
