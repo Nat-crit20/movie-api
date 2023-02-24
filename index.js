@@ -52,11 +52,8 @@ app.get("/movies/:title", async (req, res) => {
 });
 
 app.get("/genre/:name", (req, res) => {
-  let { name } = req.params;
-  Movies.findOne(
-    { "Genre.Name": name },
-    { "Genre.Name": 1, "Genre.Description": 1, _id: 0 }
-  )
+  const { name } = req.params;
+  Movies.findOne({ "Genre.Name": name }, { Genre: 1, _id: 0 })
     .then((genre) => {
       res.json(genre);
     })
@@ -67,7 +64,15 @@ app.get("/genre/:name", (req, res) => {
 });
 
 app.get("/directors/:name", (req, res) => {
-  res.send("Successful GET of director");
+  const { name } = req.params;
+  Movies.findOne({ "Director.Name": name }, { Director: 1, _id: 0 })
+    .then((person) => {
+      res.json(person);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json(`Error: ${err}`);
+    });
 });
 
 app.post("/users", (req, res) => {
