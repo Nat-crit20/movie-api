@@ -150,7 +150,17 @@ app.delete("/users/:id/movies/:movieID", (req, res) => {
 });
 
 app.delete("/users/:Username", (req, res) => {
-  Users.findOneAndDelete(req.params.id).then;
+  Users.findOneAndRemove({ Username: req.params.Username })
+    .then((user) => {
+      if (!user) {
+        res.status(400).send(`${req.params.Username} was not found`);
+      } else {
+        res.send(`${req.params.Username} was found and deleted`);
+      }
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
 });
 
 app.use((err, req, res, next) => {
