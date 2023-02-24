@@ -136,11 +136,21 @@ app.post("/users/:id/movies/:movieID", (req, res) => {
 });
 
 app.delete("/users/:id/movies/:movieID", (req, res) => {
-  res.send("Successfully deleted movie from favorites");
+  Users.findOneAndUpdate(
+    { _id: req.params.id },
+    { $pull: { FavoriteMovies: req.params.movieID } },
+    { new: true }
+  )
+    .then((user) => {
+      res.status(200).json(user);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
 });
 
-app.delete("/users/:id", (req, res) => {
-  res.send("Successfully deleted yourself");
+app.delete("/users/:Username", (req, res) => {
+  Users.findOneAndDelete(req.params.id).then;
 });
 
 app.use((err, req, res, next) => {
