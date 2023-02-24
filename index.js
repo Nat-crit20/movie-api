@@ -101,7 +101,7 @@ app.post("/users", (req, res) => {
 });
 
 app.put("/users/:id", (req, res) => {
-  Users.updateOne(
+  Users.findOneAndUpdate(
     { _id: req.params.id },
     {
       $set: {
@@ -110,7 +110,8 @@ app.put("/users/:id", (req, res) => {
         Email: req.body.Email,
         Birthday: req.body.Birthday,
       },
-    }
+    },
+    { new: true }
   )
     .then((user) => {
       res.status(200).json(user);
