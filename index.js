@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
-mongoose.set("strictQuery", false);
 const Models = require("./models.js");
 const app = express();
 
@@ -33,20 +32,22 @@ app.use("/", express.static("public"));
 
 app.get("/movies", (req, res) => {
   Movies.find()
-    .then((movie) => {
-      res.status(200).json(movie);
+    .then((movies) => {
+      res.status(200).json(movies);
     })
     .catch((err) => {
       res.status(400).send(err);
     });
 });
 
-app.get("/movies/:title", (req, res) => {
-  const { title } = req.params;
-  const movie = topTenMovies.find((element) => {
-    return element.Title === title;
-  });
-  res.send(movie);
+app.get("/movies/:title", async (req, res) => {
+  Movies.find({ Title: req.params.title })
+    .then(function (movie) {
+      res.json(movie);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 app.get("/genre/:name", (req, res) => {
@@ -58,7 +59,7 @@ app.get("/directors/:name", (req, res) => {
 });
 
 app.post("/users", (req, res) => {
-  res.send("Successful creation of user");
+  res.send("Updated users");
 });
 
 app.put("/users/:id", (req, res) => {

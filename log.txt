@@ -16,7 +16,7 @@
 }
 
 {
-    title:"Interstellar",
+    Title:"Interstellar",
     Description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
     Genre:  {
     Name: "Science Fiction",
@@ -34,7 +34,7 @@
 
 [
 {
-    title:"Inception",
+    Title:"Inception",
     Description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.",
     Genre:  {
     Name: "Thriller",
@@ -50,7 +50,7 @@
     Featured: false
 },
 {
-    title:"Tenet",
+    Title:"Tenet",
     Description: "Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.",
     Genre: {
     Name: "Action",
@@ -66,7 +66,7 @@
     Featured: false
 },
 {
-    title:"E.T. the Extra-Terrestrial",
+    Title:"E.T. the Extra-Terrestrial",
     Description: "A troubled child summons the courage to help a friendly alien escape from Earth and return to his home planet.",
     Genre:  {
     Name: "Adventure",
@@ -82,7 +82,7 @@
     Featured: false
 },
 {
-    title:"Ready Player 1",
+    Title:"Ready Player 1",
     Description: "When the creator of a virtual reality called the OASIS dies, he makes a posthumous challenge to all OASIS users to find his Easter Egg, which will give the finder his fortune and control of his world.",
     Genre: {
     Name: "Science Fiction",
@@ -98,7 +98,7 @@
     Featured: false
 },
 {
-    title:"Jurassic Park",
+    Title:"Jurassic Park",
     Description: "A pragmatic paleontologist touring an almost complete theme park on an island in Central America is tasked with protecting a couple of kids after a power failure causes the park's cloned dinosaurs to run loose.",
     Genre:  {
     Name: "Thriller",
@@ -114,7 +114,7 @@
     Featured: false
 },
 {
-    title:"Star Wars: A New Hope",
+    Title:"Star Wars: A New Hope",
     Description: "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vader.",
     Genre: {
     Name: "Science Fiction",
@@ -130,7 +130,7 @@
     Featured: false
 },
 {
-    title:"The Dark Knight Rises",
+    Title:"The Dark Knight Rises",
     Description: "Eight years after the Joker's reign of chaos, Batman is coerced out of exile with the assistance of the mysterious Selina Kyle in order to defend Gotham City from the vicious guerrilla terrorist Bane.",
     Genre:  {
     Name: "Action",
@@ -146,7 +146,7 @@
     Featured: false
 },
 {
-    title:"Dunkirk",
+    Title:"Dunkirk",
     Description: "Allied soldiers from Belgium, the British Commonwealth and Empire, and France are surrounded by the German Army and evacuated during a fierce battle in World War II.",
     Genre:  {
     Name: "Action",
@@ -163,37 +163,35 @@
 }
 ]
 
-db.movies.update({"Director.Name":"Christopher"}, {$set: {"Director.Bio":"He is well known for block buster many"}})
-
 [
 {
-    username: "anna1",
-    password: "anna234",
-    email: "anna1@gmail.com",
-    birthday: new Date('2020-01-02')
+    Username: "anna1",
+    Password: "anna234",
+    Email: "anna1@gmail.com",
+    Birthday: new Date('2020-01-02')
 },
 {
-    username: "phill2",
-    password: "phill123",
-    email: "phill2@gmail.com",
-    birthday: new Date('1982-04-23')
+    Username: "phill2",
+    Password: "phill123",
+    Email: "phill2@gmail.com",
+    Birthday: new Date('1982-04-23')
 },
 {
-    username: "Val3",
-    password: "valoria123",
-    email: "Val3@gmail.com",
-    birthday: new Date('1998-07-08')
+    Username: "Val3",
+    Password: "valoria123",
+    Email: "Val3@gmail.com",
+    Birthday: new Date('1998-07-08')
 },
 {
-    username: "MaxPOW4",
-    password: "password2",
-    email: "MaxPOW@gmail.com",
-    birthday: new Date('1997-09-10')
+    Username: "MaxPOW4",
+    Password: "password2",
+    Email: "MaxPOW@gmail.com",
+    Birthday: new Date('1997-09-10')
 },
 {
-    username: "Scoot5",
-    password: "sock4321",
-    email: "Scoot5@gmail.com",
-    birthday: new Date('2001-10-12')
+    Username: "Scoot5",
+    Password: "sock4321",
+    Email: "Scoot5@gmail.com",
+    Birthday: new Date('2001-10-12')
 }
 ]
