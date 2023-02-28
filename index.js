@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+const cors = require("cors");
 mongoose.set("strictQuery", false);
 const Models = require("./models.js");
 const app = express();
@@ -23,6 +24,7 @@ async function main() {
 app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 let auth = require("./auth")(app);
 const passport = require("passport");
 require("./passport");
