@@ -101,7 +101,10 @@ app.get(
 app.post(
   "/users",
   [
-    check("Username", "Username is required").isLength({ min: 5 }),
+    check(
+      "Username",
+      "Username is required to be greater than 5 char"
+    ).isLength({ min: 5 }),
     check(
       "Username",
       "Username contains non alphanumeric characters - not allowed"
