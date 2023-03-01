@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const { check, validationResult } = require("express-validator");
 mongoose.set("strictQuery", false);
 const Models = require("./models.js");
 const app = express();
@@ -207,6 +208,8 @@ app.use((err, req, res, next) => {
   res.status(500).send("Something broke!");
 });
 
-app.listen(3000, (req, res) => {
+let port = process.env.PORT || 3000;
+
+app.listen(port, (req, res) => {
   console.log("Your app is listening on port 3000");
 });
