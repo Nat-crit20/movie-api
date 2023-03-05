@@ -16,10 +16,13 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/myFlixDB", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  await mongoose.connect(
+    `mongodb+srv://NatGreuel7:Valoria246890@myflixdb.m9xnkss.mongodb.net/?retryWrites=true&w=majority`,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  );
 }
 
 app.use(morgan("common"));
@@ -238,6 +241,6 @@ app.use((err, req, res, next) => {
 
 let port = process.env.PORT || 3000;
 
-app.listen(port, (req, res) => {
+app.listen(port, "0.0.0.0", (req, res) => {
   console.log("Your app is listening on port 3000");
 });
