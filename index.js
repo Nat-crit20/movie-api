@@ -16,13 +16,10 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(
-    `mongodb+srv://NatGreuel7:Valoria246890@myflixdb.m9xnkss.mongodb.net/?retryWrites=true&w=majority`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  );
+  await mongoose.connect(process.env.CONNECTION_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 }
 
 app.use(morgan("common"));
