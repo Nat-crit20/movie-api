@@ -15,6 +15,7 @@ main()
   .then(() => console.log("Connected to database"))
   .catch((err) => console.log(err));
 
+
 async function main() {
   await mongoose.connect(process.env.CONNECTION_URL, {
     useNewUrlParser: true,
