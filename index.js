@@ -15,7 +15,6 @@ main()
   .then(() => console.log("Connected to database"))
   .catch((err) => console.log(err));
 
-
 async function main() {
   await mongoose.connect(process.env.CONNECTION_URL, {
     useNewUrlParser: true,
@@ -39,6 +38,7 @@ app.use("/", express.static("public"));
 
 app.get(
   "/movies",
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Movies.find()
       .then((movies) => {
