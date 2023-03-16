@@ -28,7 +28,7 @@ Users should be able to:
 ### Links
 
 - Perform fetch requests on the url: [https://blooming-shore-67354.herokuapp.com/](https://blooming-shore-67354.herokuapp.com/)
-- You can see all the request that you can perform in the [documentation](public\documentation.html)
+- You can see all the request that you can perform in the [documentation](public/documentation.html)
 
 ## My process
 
