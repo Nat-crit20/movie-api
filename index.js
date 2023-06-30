@@ -29,6 +29,7 @@ let allowedOrigins = [
   "http://testsite.com",
   "http://localhost:1234",
   "https://myflix-46b5ae.netlify.app",
+  "https://nat-crit20.github.io/",
 ];
 app.use(
   cors({
