@@ -16,7 +16,7 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(process.env.CONNECTION_URL, {
+  await mongoose.connect(process.env.CONNECTION_URL|`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@myflixdb.m9xnkss.mongodb.net/myFlixDB?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
