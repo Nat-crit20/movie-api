@@ -7,6 +7,7 @@ const { check, validationResult } = require("express-validator");
 mongoose.set("strictQuery", false);
 const Models = require("./models.js");
 const app = express();
+const config = require("./confg.js");
 
 const Movies = Models.Movie;
 const Users = Models.User;
@@ -16,10 +17,14 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(process.env.CONNECTION_URL|`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@myflixdb.m9xnkss.mongodb.net/myFlixDB?retryWrites=true&w=majority`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  await mongoose.connect(
+    process.env.CONNECTION_URL |
+      `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@myflixdb.m9xnkss.mongodb.net/myFlixDB?retryWrites=true&w=majority`,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  );
 }
 
 app.use(bodyParser.json());
