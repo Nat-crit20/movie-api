@@ -7,6 +7,8 @@ const { check, validationResult } = require("express-validator");
 mongoose.set("strictQuery", false);
 const Models = require("./models.js");
 const app = express();
+const util = require("util");
+const encoder = new util.TextEncoder("utf-8");
 
 const Movies = Models.Movie;
 const Users = Models.User;
