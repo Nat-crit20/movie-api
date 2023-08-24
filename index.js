@@ -16,10 +16,13 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(process.env.CONNECTION_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  await mongoose.connect(
+    `mongodb+srv://NatGreuel7:Valoria246890@myflixdb.m9xnkss.mongodb.net/myFlixDB?retryWrites=true&w=majority`,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  );
 }
 
 app.use(bodyParser.json());
