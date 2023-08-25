@@ -7,6 +7,8 @@ const { check, validationResult } = require("express-validator");
 mongoose.set("strictQuery", false);
 const Models = require("./models.js");
 const app = express();
+const dotenv = require("dotenv");
+dotenv.config();
 
 const Movies = Models.Movie;
 const Users = Models.User;
