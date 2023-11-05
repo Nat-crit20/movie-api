@@ -8,6 +8,14 @@ mongoose.set("strictQuery", false);
 const Models = require("./models.js");
 const app = express();
 const dotenv = require("dotenv");
+const fileUpload = require("express-fileupload");
+const {
+  S3Client,
+  PutObjectCommand,
+  GetObjectCommand,
+  ListObjectsV2Command,
+} = require("@aws-sdk/client-s3");
+const fs = require("fs");
 dotenv.config();
 
 const Movies = Models.Movie;
@@ -27,20 +35,23 @@ async function main() {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 let allowedOrigins = [
-  "http://localhost:8080",
+  "http://myflix-aws.s3-website.eu-central-1.amazonaws.com",
   "http://localhost:1234",
-  "http://localhost:4200",
+  "http://3.69.30.141",
   "https://myflix-46b5ae.netlify.app",
   "https://nat-crit20.github.io",
 ];
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://nat-crit20.github.io"); // update to match the domain you will make the request from
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
+app.use(fileUpload());
+// Set up AWS S3 client
+const s3Client = new S3Client({
+  region: "us-east-1", // Replace with your AWS region
+  credentials: {
+    accessKeyId: "//AccesseKey", // Replace with your AWS Access Key ID
+    secretAccessKey: "///srcAccessKey", // Replace with your AWS Secret Access Key
+  },
 });
+const uploadS3BucketName = "myawsbucket-24";
+const imageS3BucketName = "mylambas3bucketdemo";
 
 app.use(
   cors({
@@ -57,6 +68,7 @@ app.use(
     },
   })
 );
+
 let auth = require("./auth")(app);
 const passport = require("passport");
 require("./passport");
@@ -81,6 +93,65 @@ app.get(
       });
   }
 );
+
+// Endpoint to list all images in a bucket
+app.get("/list-images", (req, res) => {
+  const listObjectsCommand = new ListObjectsV2Command({
+    Bucket: imageS3BucketName,
+  });
+
+  s3Client
+    .send(listObjectsCommand)
+    .then((listObjectsResponse) => {
+      res.send(listObjectsResponse);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: "Error listing images" });
+    });
+});
+
+// Endpoint to upload an image to a bucket
+app.post("/upload-image", (req, res) => {
+  const objectKey = `images/${Date.now()}.jpeg`; // Specify the object key in the S3 bucket
+  const fileStream = fs.createReadStream(req.files.image.tempFilePath); // Replace with your local image path
+
+  const uploadCommand = new PutObjectCommand({
+    Bucket: uploadS3BucketName,
+    Key: objectKey,
+    Body: fileStream,
+  });
+
+  s3Client
+    .send(uploadCommand)
+    .then(() => {
+      res.status(200).json({ message: "Image uploaded to S3 successfully" });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: "Error uploading image" });
+    });
+});
+
+// Endpoint to retrieve an image from a bucket
+app.get("/get-image/:imageKey", (req, res) => {
+  const imageKey = req.params.imageKey; // Specify the image key in the S3 bucket
+  const getObjectCommand = new GetObjectCommand({
+    Bucket: imageS3BucketName,
+    Key: imageKey,
+  });
+
+  s3Client
+    .send(getObjectCommand)
+    .then((data) => {
+      const outputStream = fs.createWriteStream("local-image.jpeg");
+      data.Body.pipe(outputStream);
+      res
+        .status(200)
+        .json({ message: "Image retrieved from S3 and saved locally" });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: "Error retrieving image" });
+    });
+});
 
 app.get(
   "/movies/:title",
