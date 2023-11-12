@@ -6,9 +6,9 @@ const cors = require("cors");
 const { check, validationResult } = require("express-validator");
 mongoose.set("strictQuery", false);
 const Models = require("./models.js");
+const multer = require("multer");
 const app = express();
 const dotenv = require("dotenv");
-const fileUpload = require("express-fileupload");
 const {
   S3Client,
   PutObjectCommand,
@@ -32,8 +32,8 @@ async function main() {
   });
 }
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: "20mb" }));
+app.use(bodyParser.urlencoded({ extended: true, limit: "20mb" }));
 let allowedOrigins = [
   "http://myflix-aws.s3-website.eu-central-1.amazonaws.com",
   "http://localhost:1234",
@@ -41,7 +41,6 @@ let allowedOrigins = [
   "https://myflix-46b5ae.netlify.app",
   "https://nat-crit20.github.io",
 ];
-app.use(fileUpload());
 // Set up AWS S3 client
 const s3Client = new S3Client({
   region: "us-east-1", // Replace with your AWS region
@@ -111,46 +110,61 @@ app.get("/list-images", (req, res) => {
 });
 
 // Endpoint to upload an image to a bucket
-app.post("/upload-image", (req, res) => {
-  const objectKey = `images/${Date.now()}.jpeg`; // Specify the object key in the S3 bucket
-  const fileStream = fs.createReadStream(req.files.image.tempFilePath); // Replace with your local image path
+const storage = multer.memoryStorage(); // Store the file in memory
+const upload = multer({ storage });
 
-  const uploadCommand = new PutObjectCommand({
-    Bucket: uploadS3BucketName,
-    Key: objectKey,
-    Body: fileStream,
-  });
+// Endpoint to handle image upload
+app.post("/upload", upload.single("image"), async (req, res) => {
+  try {
+    const { originalname, buffer } = req.file;
 
-  s3Client
-    .send(uploadCommand)
-    .then(() => {
-      res.status(200).json({ message: "Image uploaded to S3 successfully" });
-    })
-    .catch((err) => {
-      res.status(500).json({ error: "Error uploading image" });
-    });
+    // Specify the S3 bucket and key (object key) for the image
+    const objectKey = originalname; // Use the original file name
+
+    // Prepare the parameters for the S3 PUT operation
+    const params = {
+      Bucket: uploadS3BucketName,
+      Key: objectKey,
+      Body: buffer,
+    };
+
+    // Upload the image to the S3 bucket
+    await s3Client.send(new PutObjectCommand(params));
+
+    res.status(200).json({ message: "Image uploaded successfully" });
+  } catch (error) {
+    console.error("Error uploading image:", error);
+    res.status(500).json({ error: "Image upload failed" });
+  }
 });
-
 // Endpoint to retrieve an image from a bucket
-app.get("/get-image/:imageKey", (req, res) => {
-  const imageKey = req.params.imageKey; // Specify the image key in the S3 bucket
-  const getObjectCommand = new GetObjectCommand({
-    Bucket: imageS3BucketName,
-    Key: imageKey,
-  });
+app.get("/view-image/:key", async (req, res) => {
+  try {
+    const { key } = req.params;
 
-  s3Client
-    .send(getObjectCommand)
-    .then((data) => {
-      const outputStream = fs.createWriteStream("local-image.jpeg");
-      data.Body.pipe(outputStream);
-      res
-        .status(200)
-        .json({ message: "Image retrieved from S3 and saved locally" });
-    })
-    .catch((err) => {
-      res.status(500).json({ error: "Error retrieving image" });
-    });
+    // Specify the S3 bucket
+    const bucketName = "mylambas3bucketdemo";
+
+    // Prepare the parameters for the S3 GET operation
+    const params = {
+      Bucket: bucketName,
+      Key: key,
+    };
+
+    // Retrieve the image from S3
+    const { Body, ContentType } = await s3Client.send(
+      new GetObjectCommand(params)
+    );
+
+    // Set the appropriate headers for image response
+    res.setHeader("Content-Type", ContentType);
+
+    // Pipe the image data directly to the response
+    Body.pipe(res);
+  } catch (error) {
+    console.error("Error viewing image:", error);
+    res.status(500).send("Failed to view image from S3");
+  }
 });
 
 app.get(
