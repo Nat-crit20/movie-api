@@ -1,21 +1,21 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const morgan = require("morgan");
+//const morgan = require("morgan");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const { check, validationResult } = require("express-validator");
 mongoose.set("strictQuery", false);
 const Models = require("./models.js");
-const multer = require("multer");
+//const multer = require("multer");
 const app = express();
 const dotenv = require("dotenv");
-const {
-  S3Client,
-  PutObjectCommand,
-  GetObjectCommand,
-  ListObjectsV2Command,
-} = require("@aws-sdk/client-s3");
-const fs = require("fs");
+// const {
+//   S3Client,
+//   PutObjectCommand,
+//   GetObjectCommand,
+//   ListObjectsV2Command,
+// } = require("@aws-sdk/client-s3");
+//const fs = require("fs");
 dotenv.config();
 
 const Movies = Models.Movie;
@@ -41,6 +41,7 @@ let allowedOrigins = [
   "https://myflix-46b5ae.netlify.app",
   "https://nat-crit20.github.io",
 ];
+/*
 // Set up AWS S3 client
 const s3Client = new S3Client({
   region: "us-east-1", // Replace with your AWS region
@@ -51,7 +52,7 @@ const s3Client = new S3Client({
 });
 const uploadS3BucketName = "myawsbucket-24";
 const imageS3BucketName = "mylambas3bucketdemo";
-
+*/
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -92,7 +93,7 @@ app.get(
       });
   }
 );
-
+/*
 // Endpoint to list all images in a bucket
 app.get("/list-images", (req, res) => {
   const listObjectsCommand = new ListObjectsV2Command({
@@ -166,7 +167,7 @@ app.get("/view-image/:key", async (req, res) => {
     res.status(500).send("Failed to view image from S3");
   }
 });
-
+*/
 app.get(
   "/movies/:title",
   passport.authenticate("jwt", { session: false }),
