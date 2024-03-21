@@ -4,7 +4,6 @@
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
@@ -21,9 +20,6 @@ Users should be able to:
 - Login and Sign up as a user
 - See a list of movies
 
-### Screenshot
-
-![]()
 
 ### Links
 
